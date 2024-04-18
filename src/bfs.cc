@@ -14,7 +14,6 @@
 #include "sliding_queue.h"
 #include "timer.h"
 
-
 /*
 GAP Benchmark Suite
 Kernel: Breadth-First Search (BFS)

@@ -16,7 +16,6 @@
 #include "timer.h"
 #include "util.h"
 
-
 /*
 GAP Benchmark Suite
 Kernel: Betweenness Centrality (BC)
@@ -95,6 +94,7 @@ void PBFS(const Graph &g, NodeID source, pvector<CountT> &path_counts,
 pvector<ScoreT> Brandes(const Graph &g, SourcePicker<Graph> &sp,
                         NodeID num_iters, bool logging_enabled = false) {
   Timer t;
+
   t.Start();
   pvector<ScoreT> scores(g.num_nodes(), 0);
   pvector<CountT> path_counts(g.num_nodes());
@@ -239,9 +239,11 @@ int main(int argc, char* argv[]) {
   Builder b(cli);
   Graph g = b.MakeGraph();
   SourcePicker<Graph> sp(g, cli.start_vertex());
+  
   auto BCBound = [&sp, &cli] (const Graph &g) {
     return Brandes(g, sp, cli.num_iters(), cli.logging_en());
   };
+  
   SourcePicker<Graph> vsp(g, cli.start_vertex());
   auto VerifierBound = [&vsp, &cli] (const Graph &g,
                                      const pvector<ScoreT> &scores) {

@@ -17,7 +17,6 @@
 #include "graph.h"
 #include "pvector.h"
 
-
 /*
 GAP Benchmark Suite
 Kernel: Triangle Counting (TC)

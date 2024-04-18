@@ -16,7 +16,7 @@
 #include "timer.h"
 #include "util.h"
 #include "writer.h"
-
+#include "zsim_hooks.h"
 
 /*
 GAP Benchmark Suite
@@ -103,6 +103,7 @@ void BenchmarkKernel(const CLApp &cli, const GraphT_ &g,
   g.PrintStats();
   double total_seconds = 0;
   Timer trial_timer;
+  zsim_roi_begin();
   for (int iter=0; iter < cli.num_trials(); iter++) {
     trial_timer.Start();
     auto result = kernel(g);
@@ -119,6 +120,7 @@ void BenchmarkKernel(const CLApp &cli, const GraphT_ &g,
       PrintTime("Verification Time", trial_timer.Seconds());
     }
   }
+  zsim_roi_end();
   PrintTime("Average Time", total_seconds / cli.num_trials());
 }
 

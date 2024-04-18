@@ -14,7 +14,6 @@
 #include "graph.h"
 #include "pvector.h"
 
-
 /*
 GAP Benchmark Suite
 Kernel: Connected Components (CC)
